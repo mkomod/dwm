@@ -1,0 +1,9 @@
+LICENSE
+FAQ
+TODO
+LEGACY
+
+dwm
+*.o
+*.old
+*.orig
