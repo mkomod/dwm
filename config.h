@@ -12,7 +12,7 @@ static const unsigned int gappiv    		= 10;       /* vert inner gap between wind
 static const unsigned int gappoh    		= 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    		= 10;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          		= 0;        /* 1 means no outer gap when there is only one window */
-static const int swallowfloating    		= 0;        /* 1 means swallow floating windows by default */
+static const int swallowfloating    		= 1;        /* 1 means swallow floating windows by default */
 static const int showbar            		= 1;        /* 0 means no bar */
 static const int topbar             		= 1;        /* 0 means bottom bar */
 static const char *fonts[]          		= { "monospace:size=10",  };
@@ -70,11 +70,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_blue, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *lockcmd[]  = { "sflock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,			XK_Return, spawn,          {.v = termcmd } },
+	{ Mod4Mask,                     XK_l,	   spawn,      	   {.v = lockcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_b,      togglesystray,  {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
